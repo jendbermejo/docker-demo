@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit colors="true"
+         stopOnFailure="false"
+	 bootstrap="../../vendor/autoload.php"
+         convertErrorsToExceptions="true"
+         convertWarningsToExceptions="true"
+         convertNoticesToExceptions="true">
+
+    <testsuites>
+        <testsuite name="service-stock">
+            <directory>unit/src</directory>
+        </testsuite>
+    </testsuites>
+
+    <filter>
+        <whitelist>
+	    <directory suffix=".php">../../src</directory>
+        </whitelist>
+    </filter>
+</phpunit>

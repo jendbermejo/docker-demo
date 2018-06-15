@@ -6,7 +6,7 @@ services:
         ports:
             - "9000:9000"
         volumes:
-            - ./stock-service:/var/www/html
+            - ./code:/var/www/html
         networks:
             - stockapp
         deploy:
@@ -17,7 +17,7 @@ services:
         ports:
             - "10001:80"
         volumes:
-            - ./stock-service:/var/www/html
+            - ./code:/var/www/html
             - ./web/nginx/site.conf:/etc/nginx/conf.d/default.conf
         depends_on:
             - php 
@@ -30,7 +30,7 @@ services:
     composer:
         image: composer:latest
         volumes:
-            - ./stock-service:/app
+            - ./code:/app
         command: install
         networks:
             - stockapp
@@ -44,7 +44,7 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - ./stock-service/database.sql:/docker-entrypoint-initdb.d/database.sql
+            - ./schema/database.sql:/docker-entrypoint-initdb.d/database.sql
         networks:
             - stockapp
       

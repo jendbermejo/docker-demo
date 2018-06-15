@@ -1,0 +1,33 @@
+{
+    "name": "service/stock",
+    "description": "Stock service",
+    "keywords": ["service", "rest", "psr7"],
+    "homepage": "http://github.com/n3xu5/Stock-service",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael Dias",
+            "email": "n3xu5.0@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.1",
+        "slim/slim": "^3.1",
+        "slim/php-view": "^2.0",
+        "monolog/monolog": "@stable",
+        "psr/container": "@stable",
+        "n3xu5/commander": "@stable"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "@stable",
+        "squizlabs/php_codesniffer": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "Stock\\": ["src","tests/unit/src"]
+        }
+    },
+    "config": {
+        "process-timeout" : 0
+    }
+}
