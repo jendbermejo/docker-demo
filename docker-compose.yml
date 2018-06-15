@@ -2,7 +2,7 @@ version: '3.6'
 services:
 
     php:
-        image: 127.0.0.1:5000/php 
+        image: jendbermejo/docker-php:7.2.1 
         ports:
             - "9000:9000"
         volumes:
@@ -10,11 +10,10 @@ services:
         networks:
             - stockapp
         deploy:
-            restart_policy:
-               condition: on-failure 
+            replicas: 2
 
     nginx:
-        image: 127.0.0.1:5000/nginx
+        image: nginx:latest
         ports:
             - "10001:80"
         volumes:
@@ -24,12 +23,12 @@ services:
             - php 
             - service-stock-mysql
         deploy:
-            replicas: 2
+            replicas: 3
         networks:
             - stockapp
 
     composer:
-        image: 127.0.0.1:5000/composer
+        image: composer:latest
         volumes:
             - ./stock-service:/app
         command: install
@@ -37,8 +36,7 @@ services:
             - stockapp
 
     service-stock-mysql:
-        image: 127.0.0.1:5000/mysql:5.7.22
-        restart: always
+        image: mysql:5.7.22
         env_file:
            - ".env"
         environment:
@@ -46,7 +44,6 @@ services:
         ports:
             - "3306:3306"
         volumes:
-            - ./data/db/mysql:/var/lib/mysql 
             - ./stock-service/database.sql:/docker-entrypoint-initdb.d/database.sql
         networks:
             - stockapp
