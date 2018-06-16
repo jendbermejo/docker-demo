@@ -20,8 +20,7 @@ node {
        stage('Run Build'){
 
          print "build"
-         sh 'ssh docker@192.168.99.100' 
-         sh 'docker stack services stock13'
+         sh 'ssh docker@192.168.99.100 docker stack ls' 
        
        }
 
