@@ -1,0 +1,25 @@
+{
+    "name": "n3xu5/commander",
+    "description": "A set of interfaces and traits aimed to structure better a domain driven layered application",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Rafael Dias",
+            "email": "n3xu5.0@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=7.2",
+        "psr/container": "@stable"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "@stable",
+        "squizlabs/php_codesniffer": "@stable"
+    },
+    "autoload": {
+        "psr-4": {
+            "Commander\\": ["src", "tests/unit/src"]
+        }
+    }
+}

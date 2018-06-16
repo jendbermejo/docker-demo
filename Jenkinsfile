@@ -1,5 +1,6 @@
 node {
     def app
+    CWD="/var/jenkins_home/workspace/SimpleDockerDemo"
 
     currentBuild.result = "SUCCESS"
 
@@ -13,7 +14,7 @@ node {
        stage('Build'){
 
          print "build"
-         sh 'ssh -A docker@192.168.99.102 docker stack deploy -c docker-compose.yml stock13'
+         sh 'ls $CWD'
        
        }
 
