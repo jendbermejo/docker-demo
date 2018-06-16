@@ -13,7 +13,7 @@ node {
        stage('Build'){
 
          print "build"
-         sh 'ssh -A docker@192.168.99.102'
+         sh 'ssh -A docker@192.168.99.102 ls /Users/jdbermejo/docker.me/demo/proj/docker-demo'
        
        }
 
