@@ -13,7 +13,7 @@ node {
        stage('Build'){
 
          print "build"
-         sh 'docker info'
+         sh 'eval $(docker-machine env node1)'
        
        }
 
