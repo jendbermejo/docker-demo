@@ -20,7 +20,7 @@ node {
        stage('Run Build'){
 
          print "build"
-         sh 'php --version'
+         sh 'ssh docker@192.168.99.100 docker stack services stock13'
        
        }
 
