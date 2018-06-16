@@ -5,28 +5,26 @@ node {
 
     try {
 
-       stage('Checkout Repo'){
+       stage('Preparation'){
 
           checkout scm
        }
 
-       stage('Run Test'){
-
-         print "test"
-
-
-       }
-
-       stage('Run Build'){
+       stage('Build'){
 
          print "build"
-         sh 'ssh docker@192.168.99.100 docker stack ls' 
        
        }
 
-       stage('Run Deploy'){
+       stage('Test'){
 
-         print "build"
+         print "test"
+
+       }
+
+       stage('Deploy'){
+
+         print "deploy"
 
        }
 
