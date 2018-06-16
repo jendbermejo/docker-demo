@@ -13,7 +13,7 @@ node {
        stage('Build'){
 
          print "build"
-         sh 'docker-compose build'
+         sh 'docker info'
        
        }
 
