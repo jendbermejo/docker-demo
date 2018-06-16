@@ -5,25 +5,26 @@ node {
 
     try {
 
-       stage('Checkout'){
+       stage('Checkout Repo'){
 
           checkout scm
        }
 
-       stage('Test'){
+       stage('Run Test'){
 
          print "test"
 
 
        }
 
-       stage('Build Docker'){
+       stage('Run Build'){
 
          print "build"
+         sh 'php --version'
        
        }
 
-       stage('Deploy'){
+       stage('Run Deploy'){
 
          print "build"
 
