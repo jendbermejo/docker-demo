@@ -13,7 +13,7 @@ node {
        stage('Build'){
 
          print "build"
-         sh 'eval $(docker-machine env node1)'
+         sh 'ssh -A docker@192.168.99.102'
        
        }
 
