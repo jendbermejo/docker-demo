@@ -2,7 +2,6 @@ node {
     def app
     
     currentBuild.result = "SUCCESS"
-    $SWARM_MGR='192.168.99.102'
     try {
 
        stage('Preparation'){
