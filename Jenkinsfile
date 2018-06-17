@@ -16,21 +16,21 @@ node {
        stage('Build'){
 
          print "Initializing the Swarm cluster"
-         sh 'swarm.sh'
+         sh '$PWD/swarm.sh'
        
        }
 
        stage('Test'){
 
          print "Running PHPUnit"
-         sh 'docker run phpunit/phpunit:6.5.3 -c tests/unit/phpunit.xml tests/unit'
+         sh 'docker run phpunit/phpunit:6.5.3 -c $$JENKINS_DATA_DIR/code/tests/unit/phpunit.xml $$JENKINS_DATA_DIR/code/tests/unit'
 
        }
 
        stage('Deploy'){
 
          print "Deploying the Application"
-         sh 'stack.sh'
+         sh '$PWD/stack.sh'
        }
 
     }
