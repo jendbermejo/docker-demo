@@ -8,8 +8,7 @@ node {
 
          print "Cloning the Github Repo"
          checkout scm
-         sh 'ssh docker@$(docker-machine ip node1) rm -rf /home/docker/docker-demo'
-         sh 'ssh docker@$(docker-machine ip node1) mkdir /home/docker/docker-demo'
+         sh 'ssh docker@$(docker-machine ip node1) rm -rf /home/docker/docker-demo/*'
          sh 'scp -r /var/jenkins_home/workspace/DockerSwarmDeployment/*  docker@$(docker-machine ip node1):/home/docker/docker-demo/'
        }
 
