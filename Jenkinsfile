@@ -23,7 +23,7 @@ node {
        stage('Test'){
 
          print "Running PHPUnit"
-         sh 'docker run phpunit/phpunit:6.5.3 -c $$JENKINS_DATA_DIR/code/tests/unit/phpunit.xml $$JENKINS_DATA_DIR/code/tests/unit'
+         sh 'docker run phpunit/phpunit:6.5.3 -c $JENKINS_DATA_DIR/code/tests/unit/phpunit.xml $JENKINS_DATA_DIR/code/tests/unit'
 
        }
 
