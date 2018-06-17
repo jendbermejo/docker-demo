@@ -1,6 +1,6 @@
 node {
     def app
-    CWD="/home/docker/docker-demo"
+    $PWD="/var/jenkins_home/workspace/SimpleDockerDemo"
 
     currentBuild.result = "SUCCESS"
 
@@ -14,7 +14,7 @@ node {
        stage('Build'){
 
          print "build"
-         sh 'swarm.sh'
+         sh '$PWD/swarm.sh'
        
        }
 
@@ -27,7 +27,7 @@ node {
        stage('Deploy'){
 
          print "deploy"
-         sh 'stack.sh'
+         sh '$PWD/stack.sh'
        }
 
     }
