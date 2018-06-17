@@ -1,6 +1,7 @@
 node {
     def app
-    $PWD="/var/jenkins_home/workspace/SimpleDockerDemo"
+    $PIPELINE="SimpleDockerDemo"
+    $JENKINS_DATA_DIR="$JENKINS_HOME/workspace/$PIPELINE"
 
     currentBuild.result = "SUCCESS"
 
@@ -8,29 +9,28 @@ node {
 
        stage('Preparation'){
 
-          checkout scm
-          sh 'docker-machine ssh node1'
-          sh 'echo $PWD'
-          sh 'cd  /home/docker/docker-demo'
+         print "Cloning the Github Repo"
+         checkout scm
        }
 
        stage('Build'){
 
-         print "build"
-         sh '$PWD/swarm.sh'
+         print "Initializing the Swarm cluster"
+         sh '$JENKINS_DATA_DIR/swarm.sh'
        
        }
 
        stage('Test'){
 
-         print "test"
+         print "Running PHPUnit"
+         sh 'docker run phpunit/phpunit:6.5.3 -c tests/unit/phpunit.xml tests/unit'
 
        }
 
        stage('Deploy'){
 
-         print "deploy"
-         sh '$PWD/stack.sh'
+         print "Deploying the Application"
+         sh '$JENKINS_DATA_DIR/stack.sh'
        }
 
     }
