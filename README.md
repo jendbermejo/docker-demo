@@ -2,9 +2,13 @@
 
 A simple PHP application running on docker swarm cluster.
 
-## Getting Started
+## Introduction
 
 These instructions will get you a copy of the project up and running on your local machine. Be sure to follow the installation and deployment guide to make this application up and running on your local.
+
+A Jenkins server running on docker will be installed locally. From Jenkins, a Pipeline will be created to pull the source codes from the Github repo and run the rest of the stages in the pipeline. The application will be deployed on VMs locally created via docker-machine command.
+
+Application will run on cluster (1 manager / 1 worker) via Docker Swarm. However you can add more worker nodes by simply creating more docker machines. The swarm cluster initialization will be done automatically by Jenkins thru the Pipeline.
 
 ## Prerequisites
 
