@@ -14,7 +14,7 @@ node {
        stage('Build'){
 
          print "build"
-         sh 'ls $CWD'
+         sh 'swarm.sh'
        
        }
 
@@ -27,7 +27,7 @@ node {
        stage('Deploy'){
 
          print "deploy"
-
+         sh 'stack.sh'
        }
 
     }
