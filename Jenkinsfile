@@ -9,6 +9,9 @@ node {
        stage('Preparation'){
 
           checkout scm
+	  sh 'eval $(docker-machine env node1 --shell sh)'
+          sh 'docker-machine ssh node1 cd docker-demo'
+          sh 'git pull'
        }
 
        stage('Build'){
