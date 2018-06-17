@@ -9,9 +9,9 @@ node {
        stage('Preparation'){
 
           checkout scm
-          sh 'docker-machine ssh node1 cd docker-demo'
+          sh 'docker-machine ssh node1'
           sh 'echo $PWD'
-          sh 'git pull'
+          sh 'cd  /home/docker/docker-demo'
        }
 
        stage('Build'){
