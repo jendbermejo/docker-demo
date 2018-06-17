@@ -1,4 +1,4 @@
-# Docker Application Running Docker Swarm Cluster
+# PHP Application Running Docker Swarm Cluster
 
 A simple PHP application running on docker swarm cluster.
 
@@ -95,7 +95,7 @@ Proceed to the [Post-installation setup wizard](https://jenkins.io/doc/book/inst
 
 I wanted my Jenkins server to be able to connect and execute docker commands remotely to one of my VMs. I delegated `node1` since I also wanted my Jenkins to initiate the Swarm cluster in there.
 
-  ### Todo
+  #### Todo
    We'll need to be able to login into the remote host from the Jenkins server using SSH keys.
  
    Login to the Jenkins container: 
@@ -127,9 +127,9 @@ I used Jenkinsfile to be able to deploy the application via Jenkins Pipeline. Ru
 
 My Pipeline has 4 Stages:
 
-### Stage 1: Prepartion
+  #### Stage 1: Prepartion
     - Jenkins clone the repo
-### Stage 2: Build
+  #### Stage 2: Build
     - Jenkins remotely run the swarm.sh
     - swarm.sh will do the ff:
           - will setup the environment for node1 by running `eval $(docker-machine env node1 --shell sh)`
@@ -138,14 +138,14 @@ My Pipeline has 4 Stages:
           - will run docker swarm join command in node2
           - finally, run `eval $(docker-machine env node1 --shell sh)` and list the nodes in the swarm cluster
   
-### Stage 3: Test
+  #### Stage 3: Test
      - Jenkins run PHPUnit command
-### Stage 4: Deploy
+  #### Stage 4: Deploy
     - Jenkins remotely run stack.sh
     - stack.sh will run the ff:
           - setup the environment for node1 (swarm manager)
           - run docker stack deploy command 
-
+          
 ## Author
 
 * **Jennifer Bermejo**
