@@ -23,7 +23,6 @@ node {
        stage('Test'){
 
          print "Running PHPUnit"
-         sh 'docker run phpunit/phpunit:6.5.3 -c ./code/tests/unit/phpunit.xml ./code/tests/unit'
 
        }
 
