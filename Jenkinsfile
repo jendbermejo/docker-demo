@@ -8,8 +8,6 @@ node {
 
          print "Cloning the Github Repo"
          checkout scm
-         sh 'ssh docker@$(docker-machine ip node1) ls /home/docker/project/'
-         sh 'scp -r /var/jenkins_home/workspace/*  docker@$(docker-machine ip node1):/home/docker/project'
        }
 
        stage('Build'){
