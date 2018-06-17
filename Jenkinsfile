@@ -1,6 +1,6 @@
 node {
     def app
-    $JENKINS_DATA_DIR="$JENKINS_HOME/workspace/SimpleDockerDemo"
+    $JENKINS_DATA_DIR="/var/jenkins_home/workspace/SimpleDockerDemo"
 
     currentBuild.result = "SUCCESS"
 
