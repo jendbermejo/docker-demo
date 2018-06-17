@@ -1,6 +1,4 @@
-docker-machine ssh node1
-echo $PWD
-ls $PWD 
+docker-machine ssh node1 && echo $PWD && ls $PWD 
 #eval $(docker-machine env node1 --shell sh)
 #docker swarm init --advertise-addr $(docker-machine ip node1)
 #
