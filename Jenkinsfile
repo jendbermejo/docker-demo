@@ -1,7 +1,7 @@
 node {
     def app
-    $PIPELINE="SimpleDockerDemo"
-    $JENKINS_DATA_DIR="$JENKINS_HOME/workspace/$PIPELINE"
+    $PIPELINE_NAME="SimpleDockerDemo"
+    $JENKINS_DATA_DIR="$JENKINS_HOME/workspace/$PIPELINE_NAME"
 
     currentBuild.result = "SUCCESS"
 
