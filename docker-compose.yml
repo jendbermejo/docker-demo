@@ -1,12 +1,12 @@
-version: '3.6'
+version: '3'
 services:
 
     php:
-        image: jendbermejo/docker-php:7.2.1 
+        image: jendbermejo/docker-php:7.2.1
         ports:
             - "9000:9000"
         volumes:
-            - ./code:/var/www/html
+            - /home/docker/docker-demo/code:/var/www/html
         networks:
             - stockapp
         deploy:
@@ -17,10 +17,10 @@ services:
         ports:
             - "10001:80"
         volumes:
-            - ./code:/var/www/html
-            - ./web/nginx/site.conf:/etc/nginx/conf.d/default.conf
+            - /home/docker/docker-demo/code:/var/www/html
+            - /home/docker/docker-demo/web/nginx/site.conf:/etc/nginx/conf.d/default.conf
         depends_on:
-            - php 
+            - php
             - service-stock-mysql
         deploy:
             replicas: 3
@@ -30,23 +30,21 @@ services:
     composer:
         image: composer:latest
         volumes:
-            - ./code:/app
+            - /home/docker/docker-demo/code:/app
         command: install
         networks:
             - stockapp
 
     service-stock-mysql:
         image: mysql:5.7.22
-        env_file:
-           - ".env"
         environment:
            - MYSQL_ROOT_PASSWORD=root
         ports:
             - "3306:3306"
         volumes:
-            - ./schema/database.sql:/docker-entrypoint-initdb.d/database.sql
+            - /home/docker/docker-demo/schema/database.sql:/docker-entrypoint-initdb.d/database.sql
         networks:
             - stockapp
-      
+
 networks:
     stockapp:

@@ -1,6 +1,6 @@
 node {
     def app
-    CWD="/var/jenkins_home/workspace/SimpleDockerDemo"
+    CWD="/home/docker/docker-demo"
 
     currentBuild.result = "SUCCESS"
 
