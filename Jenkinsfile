@@ -2,14 +2,14 @@ node {
     def app
     
     currentBuild.result = "SUCCESS"
-
+    $SWARM_MGR='192.168.99.102'
     try {
 
        stage('Preparation'){
 
          print "Cloning the Github Repo"
          checkout scm
-         sh 'scp -r /var/jenkins_home/workspace/jen  docker@node1:/home/docker/project'
+         sh 'scp -r /var/jenkins_home/workspace/jen  docker@SWARM_MGR:/home/docker/project'
        }
 
        stage('Build'){
