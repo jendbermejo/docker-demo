@@ -9,6 +9,7 @@ node {
 
          print "Cloning the Github Repo"
          checkout scm
+         sh '$PWD/pull.sh'
        }
 
        stage('Build'){
