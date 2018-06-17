@@ -23,7 +23,7 @@ services:
             - php
             - service-stock-mysql
         deploy:
-            replicas: 3
+            replicas: 4
         networks:
             - stockapp
 
