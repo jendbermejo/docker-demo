@@ -2,7 +2,6 @@ node {
     def app
     
     $JENKINS_DATA_DIR="$JENKINS_HOME/workspace/SimpleDockerDemo"
-    $DOCKER_SWARM_MGR="/home/docker/docker-demo"
 
     currentBuild.result = "SUCCESS"
 
@@ -17,7 +16,7 @@ node {
        stage('Build'){
 
          print "Initializing the Swarm cluster"
-         sh '$DOCKER_SWARM_MGR/swarm.sh'
+         sh 'swarm.sh'
        
        }
 
@@ -31,7 +30,7 @@ node {
        stage('Deploy'){
 
          print "Deploying the Application"
-         sh '$DOCKER_SWARM_MGR/stack.sh'
+         sh 'stack.sh'
        }
 
     }
