@@ -9,7 +9,7 @@ node {
 
          print "Cloning the Github Repo"
          checkout scm
-         sh 'scp -r /var/jenkins_home/workspace/jen  docker@$SWARM_MGR:/home/docker/project'
+         sh 'scp -r /var/jenkins_home/workspace/jen  docker@192.168.99.102:/home/docker/project'
        }
 
        stage('Build'){
