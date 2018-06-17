@@ -21,7 +21,7 @@ node {
        stage('Test'){
 
          print "Running PHPUnit"
-
+         sh 'docker run phpunit/phpunit --version'
        }
 
        stage('Deploy'){
