@@ -23,6 +23,7 @@ node {
        stage('Test'){
 
          print "Running PHPUnit"
+         sh 'echo $JENKINS_DATA_DIR/README.md'
 
        }
 
