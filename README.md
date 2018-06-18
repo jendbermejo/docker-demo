@@ -19,7 +19,6 @@ Application will run on cluster (1 manager / 1 worker) via Docker Swarm. However
   ```
 * [Jenkins](https://jenkins.io/doc/book/installing/#downloading-and-running-jenkins-in-docker) - Docker image of Jenkins
 * [Visualizer](http://callistaenterprise.se/blogg/teknik/2017/12/18/docker-in-swarm-mode-on-docker-in-docker/) - to be able to monitor the state of the cluster 
-* [PhpUnit](https://hub.docker.com/r/phpunit/phpunit/) - Docker image for PhpUnit
 
 ## Installation
 
