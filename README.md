@@ -183,10 +183,16 @@ bash-4.4# docker stack services stock13
 Use Postman to check if Application is running correctly.
 
 Run Save Stock:
-![Save Stock](SaveStock.png)
+![Save Stock](image/SaveStock.png)
 
 Run Get Stock:
-![Get Stock](GetStock.png)
+![Get Stock](image/GetStock.png)
+
+Pipeline in Jenkins
+![Jenkins Pipeline](image/Pipeline.png)
+
+Swarm Cluster Status
+![Swarm Status](image/SwarmStat.png)
 
 ## Author
 
