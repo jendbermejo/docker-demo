@@ -129,10 +129,14 @@ Source codes resides in my [Github Repo](https://github.com/jendbermejo/docker-d
 
 I used Jenkinsfile to be able to deploy the application via Jenkins Pipeline. Running the CI is triggered manually by clicking `Build Now`.
 
+Create a Pipeline and name it `DockerSwarmDeployment`. Your Jenkins server should have access to internet to be able to connect to Github.
+
 My Pipeline has 4 Stages:
 
   #### Stage 1: Prepartion
     - Jenkins clone the repo
+    - At the same time it will run a scp command to copy the $JENKINS_HOME/workspace/$PIPELINE_NAME to Docker Swarm Manager.
+    
   #### Stage 2: Build
     - Jenkins remotely run the swarm.sh
     - swarm.sh will do the ff:
@@ -150,6 +154,40 @@ My Pipeline has 4 Stages:
           - setup the environment for node1 (swarm manager)
           - run docker stack deploy command 
           
+## Testing
+Verify if Pipeline is working:
+
+```
+  Login to Jenkins in your local machine: http://localhost:8080/
+  Go to `DockerSwarmDeployment`
+  Click `Build Now`
+```
+Login to Jenkins container to verify if Swarm Cluster is created:
+
+``` 
+  bash-4.4# docker stack ls
+  NAME                SERVICES
+  stock13             4
+```
+
+Check if services are running
+```
+  bash-4.4# docker stack services stock13
+ID                  NAME                          MODE            REPLICAS   IMAGE                          PORTS
+04oabextg4td        stock13_service-stock-mysql   replicated      1/1        mysql:5.7.22                   *:3306->3306/tcp
+i4tmi8h8xbpp        stock13_nginx                 replicated      4/4        nginx:latest                   *:10001->80/tcp
+xyfgguj65tip        stock13_composer              replicated      1/1        composer:latest
+yxh48m7hsb5l        stock13_php                   replicated      2/2        jendbermejo/docker-php:7.2.1   *:9000 >9000/tcp
+bash-4.4# docker stack services stock13
+```
+Use Postman to check if Application is running correctly.
+
+Run Save Stock:
+![Save Stock](SaveStock.png)
+
+Run Get Stock:
+![Get Stock](GetStock.png)
+
 ## Author
 
 * **Jennifer Bermejo**
