@@ -124,12 +124,23 @@ I wanted my Jenkins server to be able to connect and execute docker commands rem
    ```
    
 ## Deployment
+#### Pre-Work:
 
-Source codes resides in my [Github Repo](https://github.com/jendbermejo/docker-demo)
+Login to the docker swarm manager `(node1)`, run the ff:
+```
+1. mkdir /home/docker/docker-demo
+2. chown -R docker /home/docker/docker-demo
+```
+
+Login to your Jenkins UI.
+<pre>
+1. On your Jenkins UI, Click <b>New Item</b>
+2. Enter <b>DockerSwarmDeployment</b> and  click Pipeline.
+3. Choose <b>Pipeline script from SCM</b>. On the SCM drop-down menu choose <b>Git</b>
+4. Enter <b>https://github.com/jendbermejo/docker-demo.git</b> in the repository url and hit save.
+</pre>
 
 I used Jenkinsfile to be able to deploy the application via Jenkins Pipeline. Running the CI is triggered manually by clicking `Build Now`.
-
-Create a Pipeline and name it `DockerSwarmDeployment`. Your Jenkins server should have access to internet to be able to connect to Github.
 
 My Pipeline has 4 Stages:
 
@@ -148,6 +159,7 @@ My Pipeline has 4 Stages:
   
   #### Stage 3: Test
      - Jenkins run PHPUnit command
+     
   #### Stage 4: Deploy
     - Jenkins remotely run stack.sh
     - stack.sh will run the ff:
