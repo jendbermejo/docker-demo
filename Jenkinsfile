@@ -1,6 +1,6 @@
 node {
     def app
-    $JENKINS_HOME="/var/jenkins_home/workspace/DockerSwarmDeployment/code" 
+    $JENKINS_SERVER_HOME="/var/jenkins_home/workspace/DockerSwarmDeployment/code" 
     currentBuild.result = "SUCCESS"
     try {
 
@@ -8,7 +8,7 @@ node {
 
          print "Cloning the Github Repo"
          checkout scm
-         sh 'ssh docker@$(docker-machine ip node1) mkdir /home/docker/project'
+         sh 'ssh docker@$(docker-machine ip node1) mkdir /home/docker/docker-demo'
          sh 'scp -r /var/jenkins_home/workspace/DockerSwarmDeployment/*  docker@$(docker-machine ip node1):/home/docker/docker-demo/'
        }
 
@@ -22,7 +22,7 @@ node {
        stage('Test'){
 
          print "Running PHPUnit"
-         sh '$JENKINS_HOME/vendor/bin/phpunit -c $JENKINS_HOME/tests/unit/phpunit.xml $JENKINS_HOME/tests/unit'
+         sh '$JENKINS_SERVER_HOME/vendor/bin/phpunit -c $JENKINS_SERVER_HOME/tests/unit/phpunit.xml $JENKINS_SERVER_HOME/tests/unit'
        }
 
        stage('Deploy'){
