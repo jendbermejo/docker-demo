@@ -21,7 +21,7 @@ node {
        stage('Test'){
 
          print "Running PHPUnit"
-         sh '$JENKINS_SERVER_HOME/vendor/bin/phpunit -c $JENKINS_SERVER_HOME/tests/unit/phpunit.xml $JENKINS_SERVER_HOME/tests/unit'
+         sh '$JENKINS_HONME/workspace/DockerSwarmDeployment/code/vendor/bin/phpunit -c $JENKINS_HONME/workspace/DockerSwarmDeployment/code/tests/unit/phpunit.xml $JENKINS_HONME/workspace/DockerSwarmDeployment/code/tests/unit'
        }
 
        stage('Deploy'){
