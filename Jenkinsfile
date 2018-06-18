@@ -22,6 +22,7 @@ node {
 
          print "Running PHPUnit"
          sh 'docker run phpunit/phpunit --version'
+         sh 'echo docker run phpunit/phpunit -c $JENKINS_HOME/workspace/DockerSwarmDeployment/code/tests/unit/phpunit.xml'
        }
 
        stage('Deploy'){
