@@ -192,7 +192,7 @@ Pipeline in Jenkins
 ![Jenkins Pipeline](image/Pipeline.png)
 
 Swarm Cluster Status
-![Swarm Status](image/SwarmStat.png)
+![Swarm Status](image/SwarmStats.png)
 
 ## Author
 
