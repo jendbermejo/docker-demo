@@ -6,7 +6,7 @@ services:
         ports:
             - "9000:9000"
         volumes:
-            - - /home/docker/docker-demo/code:/var/www/html
+            - /home/docker/docker-demo/code:/var/www/html
         networks:
             - stockapp
         deploy:
