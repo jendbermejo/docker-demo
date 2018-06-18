@@ -4,11 +4,15 @@ A simple PHP application running on docker swarm cluster.
 
 ## Introduction
 
-These instructions will get you a copy of the project up and running on your local machine. Be sure to follow the installation and deployment guide to make this application up and running on your local.
+These instructions will get you a copy of the project up and running on your local machine.
 
-A Jenkins server running on docker will be installed locally. From Jenkins, a Pipeline will be created to pull the source codes from the Github repo and run the rest of the stages in the pipeline. The application will be deployed on docker machines with VirtualBox drive.
+First a Jenkins server running on docker will be installed locally. Scripted Jenkins Pipeline will be created to pull the source codes from the Github repo and execute the rest of the stages in the Jenkinsfile.  
 
-Application will run on cluster (1 manager / 1 worker) via Docker Swarm. However you can add more worker nodes by simply creating more docker machines. The swarm cluster initialization will be done automatically by Jenkins thru the Pipeline.
+Jenkins will automatically deploy the application into a docker swarm cluster. Swarm cluster will be initialized by Jenkins on the Build Stage. As of the moment, I have 2 swarm nodes (1 manager / 1 worker) enrolled in my cluster.  However you can add more worker nodes or manager by simply creating more docker machines.
+
+Docker machines are created locally with VirtualBox driver. 
+
+Be sure to follow the installation and deployment guide to make this application up and running on your local setup.
 
 ## Prerequisites
 
@@ -18,11 +22,11 @@ Application will run on cluster (1 manager / 1 worker) via Docker Swarm. However
     node2 = Swarm Worker
   ```
 * [Jenkins](https://jenkins.io/doc/book/installing/#downloading-and-running-jenkins-in-docker) - Docker image of Jenkins
-* [Visualizer](http://callistaenterprise.se/blogg/teknik/2017/12/18/docker-in-swarm-mode-on-docker-in-docker/) - to be able to monitor the state of the cluster 
+* <i>Optional </i>[Visualizer](http://callistaenterprise.se/blogg/teknik/2017/12/18/docker-in-swarm-mode-on-docker-in-docker/) - to be able to monitor the state of the cluster 
 
 ## Installation
 
-1. Create 2 VMs on you local machine using docker-machine create. Make sure VirtualBox is installed on your mac as well.
+1. Create <b>2 VMs</b> on you local machine using docker-machine create. Make sure VirtualBox is installed on your mac as well.
     
    I did not create the docker machines in my Jenkins server since I already have a VirtualBox installed in my Mac. I will later just add my remote VMs (docker machines) to my Jenkins server so I could run commands remotely to my docker swarm manager. Please see detailed guide on how to Connect your Jenkins server to a remote Docker host.
   
@@ -34,7 +38,7 @@ Application will run on cluster (1 manager / 1 worker) via Docker Swarm. However
   done
   ```
 
-  To list the created docker VMs. You should be able to see `node1` and `node2` running. 
+  To list the created docker VMs. You should be able to see <b>`node1`</b> and <b>`node2`</b> running. 
   ```
   Jen4:~ jdbermejo$ docker-machine ls
   NAME      ACTIVE   DRIVER       STATE     URL                         SWARM   DOCKER    ERRORS
@@ -43,7 +47,7 @@ Application will run on cluster (1 manager / 1 worker) via Docker Swarm. However
   node2     -        virtualbox   Running   tcp://192.168.99.101:2376           Unknown    
   ```
 
-2. Install Jenkins on your local machine using the command docker run.
+2. Install <b>Jenkins</b> on your local machine using the command docker run.
 
   ```
   Jen4:~ jdbermejo$ docker run \
@@ -78,7 +82,7 @@ Proceed to the [Post-installation setup wizard](https://jenkins.io/doc/book/inst
       $ docker-machine --version
     ```
  
- 4. Install Visualizer using docker run command. I installed mine in `node1`.
+ 4. Install <b>Visualizer</b> using docker run command. I installed mine in `node1`.
     ```
     docker service create \
     --detach=true \
@@ -87,11 +91,6 @@ Proceed to the [Post-installation setup wizard](https://jenkins.io/doc/book/inst
     --constraint=node.role==manager \
     --mount=type=bind,src=/var/run/docker.sock,dst=/var/run/docker.sock \
     dockersamples/visualizer
-    ```
-
- 5. Dowload and install PhpUnit docker image in the Jenkins container.
-    ```
-    docker pull phpunit/phpunit:6.5.3
     ```
     
 ### Connect your Jenkins server to a remote Docker host.
