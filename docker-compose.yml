@@ -1,17 +1,6 @@
 version: '3'
 services:
   
-   
-    phpunit:
-        image: phpunit/phpunit:latest
-        volumes:
-            - /home/docker/docker-demo/code:/unitests
-        command: -c /home/docker/docker-demo/code/tests/unit/phpunit.xml  
-        networks:
-            - stockapp
-        depends_on:
-            - php
-
     php:
         image: jendbermejo/docker-php:7.2.1
         ports:
